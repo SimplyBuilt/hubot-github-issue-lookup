@@ -1,6 +1,6 @@
-# hubot-github-issue-lookup [![Build Status](https://secure.travis-ci.org/mikeycgto/hubot-github-issue-lookup.png?branch=master)](https://travis-ci.org/mikeycgto/hubot-github-issue-lookup) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+# hubot-github-issue-lookup
 
-Have hubot echo back github issue titles when it hears something in the form of #\d+
+Have hubot echo back github issue titles when it hears something in the form of `/#\d+/`. Written in ES6 with Babel.
 
 ## Installation
 
