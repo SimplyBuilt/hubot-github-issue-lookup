@@ -37,7 +37,7 @@ module.exports = (robot) => {
         if (issue == undefined || isNaN(issue))
             return;
 
-        if (IGNORED.includes(msg.message.user.name))
+        if (IGNORED.indexOf(msg.message.user.name) !== -1)
             return;
 
         github.get(`repos/${REPO}/issues/${issue}`, (issue_resp) => {
