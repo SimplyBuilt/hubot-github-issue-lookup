@@ -4,6 +4,7 @@
 // Configuration:
 //   HUBOT_GITHUB_REPO
 //   HUBOT_GITHUB_TOKEN
+//   HUBOT_GITHUB_ISSUE_LINK_IGNORE_USERS
 //
 // Commands:
 //   #nnn - link to Github issue nn from HUBOT_GITHUB_REPO project
@@ -20,6 +21,7 @@
 
 const TOKEN = process.env.HUBOT_GITHUB_TOKEN;
 const REPO  = process.env.HUBOT_GITHUB_REPO;
+const IGNORED = (process.env.HUBOT_GITHUB_ISSUE_LINK_IGNORE_USERS || '').split(',');
 
 module.exports = (robot) => {
     if (TOKEN == undefined || REPO == undefined){
@@ -33,6 +35,9 @@ module.exports = (robot) => {
         var issue = +msg.match[3];
 
         if (issue == undefined || isNaN(issue))
+            return;
+
+        if (IGNORED.indexOf(msg.message.user.name) !== -1)
             return;
 
         github.get(`repos/${REPO}/issues/${issue}`, (issue_resp) => {
