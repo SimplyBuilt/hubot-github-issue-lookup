@@ -1,6 +1,16 @@
 'use strict';
 
-// Description:
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _githubot = require('githubot');
+
+var _githubot2 = _interopRequireDefault(_githubot);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TOKEN = process.env.HUBOT_GITHUB_TOKEN; // Description:
 //   Show open issues from a Github repository
 //
 // Configuration:
@@ -11,27 +21,26 @@
 // Commands:
 //   #nnn - link to Github issue nn from HUBOT_GITHUB_REPO project
 //
-// Notes:
-//   If, for example, HUBOT_GITHUB_USER_JOHN is set to GitHub user login
-//   'johndoe1', you can ask `show john's issues` instead of `show johndoe1's
-//   issues`. This is useful for mapping chat handles to GitHub logins.
+// Dependencies:
+//   "githubot": "1.0.0"
 //
-//   HUBOT_GITHUB_API allows you to set a custom URL path (for Github enterprise users)
+// Notes:
+//   The HUBOT_GITHUB_TOKEN and HUBOT_GITHUB_REPO env vars are required.
 //
 // Author:
 //   Michael Coyne (@mikeycgto)
 
-var TOKEN = process.env.HUBOT_GITHUB_TOKEN;
 var REPO = process.env.HUBOT_GITHUB_REPO;
+
 var IGNORED = (process.env.HUBOT_GITHUB_ISSUE_LINK_IGNORE_USERS || '').split(',');
 
-module.exports = function (robot) {
+exports.default = function (robot) {
     if (TOKEN == undefined || REPO == undefined) {
         console.warn("Missing HUBOT_GITHUB_TOKEN and/or HUBOT_GITHUB_REPO");
         return;
     }
 
-    var github = require("githubot")(robot);
+    var github = (0, _githubot2.default)(robot);
 
     robot.hear(/((\S*|^)?#(\d+)).*/, function (msg) {
         var issue = +msg.match[3];
