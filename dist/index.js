@@ -56,3 +56,5 @@ exports.default = function (robot) {
         });
     });
 };
+
+module.exports = exports['default'];
