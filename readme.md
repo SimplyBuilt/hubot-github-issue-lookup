@@ -7,6 +7,7 @@ Have hubot echo back github issue titles when it hears something in the form of 
 ```bash
 npm install --save hubot-github-issue-lookup
 ```
+Add `["hubot-github-issues-lookup"] to `external-scripts.json`file.
 
 ## Usage
 
