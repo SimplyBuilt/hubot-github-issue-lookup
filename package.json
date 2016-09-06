@@ -2,7 +2,7 @@
   "name": "hubot-github-issue-lookup",
   "description": "Have hubot echo back github issue titles when it hears the pound symbol followed by a number",
   "author": "SimplyBuilt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "files": [
     "dist/index.js"
